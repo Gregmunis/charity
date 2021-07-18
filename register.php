@@ -1,5 +1,6 @@
 <?php
 require_once('db.php');
+require('validator.php');
 
 session_start();
 if(!isset($_SESSION['auth'])){
@@ -11,49 +12,51 @@ if(isset($_POST['register'])) {
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
 
-    if(isset($name) AND !empty($name) AND isset($email) AND !empty($email) AND isset($phone) AND !empty($phone) AND isset($password) AND !empty($password) AND isset($password_confirm) AND !empty($password_confirm)) {
+    validate($name, $email);
+
+    // if(isset($name) AND !empty($name) AND isset($email) AND !empty($email) AND isset($phone) AND !empty($phone) AND isset($password) AND !empty($password) AND isset($password_confirm) AND !empty($password_confirm)) {
         
-        if ($password == $password_confirm) {
-            $pwd = sha1($password);
+    //     if ($password == $password_confirm) {
+    //         $pwd = sha1($password);
                 
-                $check_name = $db->prepare("SELECT * FROM users WHERE full_name = ?");
-                $check_name->execute(array($name));
-                if($check_name->rowCount() == 0) {
+    //             $check_name = $db->prepare("SELECT * FROM users WHERE full_name = ?");
+    //             $check_name->execute(array($name));
+    //             if($check_name->rowCount() == 0) {
                     
-                    $check_email = $db->prepare("SELECT * FROM users WHERE email = ?");
-                    $check_email->execute(array($email));
-                    if($check_email->rowCount() == 0) {
+    //                 $check_email = $db->prepare("SELECT * FROM users WHERE email = ?");
+    //                 $check_email->execute(array($email));
+    //                 if($check_email->rowCount() == 0) {
                         
-                        $check_phone = $db->prepare("SELECT * FROM users WHERE phone_number = ?");
-                        $check_phone->execute(array($phone));
-                        if($check_phone->rowCount() == 0) {
+    //                     $check_phone = $db->prepare("SELECT * FROM users WHERE phone_number = ?");
+    //                     $check_phone->execute(array($phone));
+    //                     if($check_phone->rowCount() == 0) {
                         
-                            $sql = $db->prepare("INSERT INTO users(full_name, email, phone_number, password) VALUES(?,?,?,?)");
-                            $result = $sql->execute(array($name, $email, $phone, $pwd));
+    //                         $sql = $db->prepare("INSERT INTO users(full_name, email, phone_number, password) VALUES(?,?,?,?)");
+    //                         $result = $sql->execute(array($name, $email, $phone, $pwd));
                             
-                            if($result){
-                                $success = 'Registration was successfull. Go to login page or click <a href="login.php">here</a>';
-                            }else{
-                                $error = 'There were errors while saving the data.';
-                            }
-                        } else{
-                            $error = "The user with this phone number already exist";
-                        }
-                    } else {
-                        $error = "The user with this email already exist";
-                    }
-                }
-                else {
-                    $error = "The user with this name already exist";
-                }
+    //                         if($result){
+    //                             $success = 'Registration was successfull. Go to login page or click <a href="login.php">here</a>';
+    //                         }else{
+    //                             $error = 'There were errors while saving the data.';
+    //                         }
+    //                     } else{
+    //                         $error = "The user with this phone number already exist";
+    //                     }
+    //                 } else {
+    //                     $error = "The user with this email already exist";
+    //                 }
+    //             }
+    //             else {
+    //                 $error = "The user with this name already exist";
+    //             }
             
-        }
-        else {
-            $error = "Passwords don't match";
-        }
-    } else {
-        $error = "All the fields are required";
-    }
+    //     }
+    //     else {
+    //         $error = "Passwords don't match";
+    //     }
+    // } else {
+    //     $error = "All the fields are required";
+    // }
 }
 
 ?>
@@ -101,17 +104,17 @@ if(isset($_POST['register'])) {
                 
                 <div class="email-section">
                     <label for="name">Name:</label>
-                    <input type="name" name="name" value="<?php if($_POST['name']) { echo $_POST['name']; } ?>" placeholder="Type your name here">
+                    <input type="name" name="name" value="<?php if(isset($_POST['name'])) { echo $_POST['name']; } ?>" placeholder="Type your name here">
                 </div>
 
                 <div class="email-section">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" value="<?php if($_POST['email']) { echo $_POST['email']; } ?>"  placeholder="Type your email here">
+                    <input type="email" name="email" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>"  placeholder="Type your email here">
                 </div>
                 
                 <div class="email-section">
                     <label for="phone">Phone number:</label>
-                    <input type="number" name="phone" value="<?php if($_POST['phone']) { echo $_POST['phone']; } ?>"  placeholder="Type your phone number here">
+                    <input type="number" name="phone" value="<?php if(isset($_POST['phone'])) { echo $_POST['phone']; } ?>"  placeholder="Type your phone number here">
                 </div>
 
                 <div class="password-section">
