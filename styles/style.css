@@ -1,0 +1,533 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+header{
+    background: white;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    padding: 8px 100px;
+    border-bottom: 1px solid #39C3E7;
+}
+.logo{
+    width: 50px !important;
+    float: left;
+}
+/*.menu{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
+ul{
+    list-style: none;
+    text-align: right;
+}
+li{
+    display: inline;
+    margin: 1px 20px;
+    color: #777;
+}
+li>a{
+    color: #777;
+    text-decoration: none;
+}
+li>a:hover{
+    color: #39C3E7;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #39C3E7;
+}
+.active{
+    color: #39C3E7 !important;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #39C3E7;
+}
+.login {
+    color: white;
+    background: #39C3E7;
+    border-radius: 50px;
+    padding: 7px 30px;
+}
+.login:hover {
+    color: #39C3E7;
+    background: white;
+    border: 1px solid #39C3E7;
+}
+h3{
+    color: #39C3E7;
+}
+h4{
+    font-size: 20px;
+    color: rgb(174, 167, 180);
+}
+.land{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url(images/donate.jpg); */
+    background: url('../images/donate.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    left: 0px;
+    right: 0px;
+}
+.intro {
+    background-color: black;
+    padding: 1px 50px;
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+.intro, h1{
+    font-size: 38px;
+    font-weight: 700;
+    color: white;
+}
+.mission {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.goal {
+    background: #39C3E7;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.events {
+    background: #2a70de;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.involve {
+    background: #213e8c;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.m-title {
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: 800;
+    margin: 5px;
+}
+.p-title {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+.quote {
+    margin: 100px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.support {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 500px;
+}
+.join {
+    background: #213e8c;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about-img {
+    background: url('../images/kids.jpg');
+    background-size: cover;
+    background-position: bottom;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.join-title {
+    color: white;
+    text-decoration: none;
+    font-size: 60px;
+    font-weight: 800;
+    margin: 10px 0px;
+}
+.support-link {
+    text-decoration: none;
+    color: white;
+    background: #39C3E7;
+    padding: 10px 50px;
+    border-radius: 50px;
+    font-size: 22px;
+}
+.support-link:hover {
+    color: #39C3E7;
+    background: white;
+    padding: 10px 50px;
+    border-radius: 50px;
+    font-size: 22px;
+    border: 1px solid #39C3E7;
+    text-decoration: none;
+}
+footer{
+    border-top: 1px solid grey;
+    text-align: center;
+    width: 100%;
+    float: left;
+}
+footer,p
+{
+    color: grey;
+}
+h2{
+    font-style: italic;
+    font-size: 40px;
+    color: black;
+    margin: 0px;
+}
+
+/* Login Page */
+.loginSection {
+    width: 100%;
+    min-height: 100vh !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #aaa; */
+}
+.homeSection {
+    width: 100%;
+    min-height: 80vh !important;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    /* background: #aaa; */
+}
+.box {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    padding: 10px;
+    /* border: 1px solid #39C3E7; */
+    border-radius: 10px;
+}
+.box2 {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    padding: 10px;
+}
+.add_btn {
+    padding: 10px 40px;
+    border: 1px solid  #39C3E7;
+    float: right;
+    margin: 20px;
+    text-decoration: none;
+    color: #39C3E7;
+}
+.login-title {
+    text-align: center;
+    color: #39C3E7;
+}
+.email-section {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+}
+.password-section {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+}
+.btn-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.login-btn {
+    padding: 0px 40px;
+    color: #fff;
+    background: #39C3E7;
+}
+.signup-link {
+    color: #39C3E7;
+}
+label {
+    margin-bottom: 5px;
+}
+input {
+    height: 40px;
+    border: 1px solid #39C3E7;
+    padding-left: 10px;
+}
+select {
+    height: 40px;
+    border: 1px solid #39C3E7;
+    padding-left: 10px;
+}
+textarea {
+    border: 1px solid #39C3E7;
+    padding-left: 10px;
+}
+.error {
+    background: rgb(255, 166, 166) !important;
+    padding: 20px;
+}
+.success {
+    background: rgb(168, 252, 168) !important;
+    padding: 20px;
+}
+table {
+    width: 100%;
+}
+#items {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#items td, #items th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#items tr:nth-child(even){background-color: #f2f2f2;}
+
+#items tr:hover {background-color: #ddd;}
+
+#items th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+@media (max-width: 770px) {
+    header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 5px;
+    }
+    .menu{
+        width: 100%;
+        float: none;
+    }
+    .logo{
+        width: 100%;
+        float: none;
+    }
+    ul{
+        list-style: none;
+        text-align: center;
+    }
+    li{
+        display: block;
+        margin: 10px;
+        color: #777;
+    }
+    li>a{
+        color: #777;
+        text-decoration: none;
+    }
+    li>a:hover{
+        color: #39C3E7;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #39C3E7;
+    }
+    .active{
+        color: #39C3E7 !important;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #39C3E7;
+    }
+    .login {
+        color: white;
+        background: #39C3E7;
+        border-radius: 50px;
+        padding: 7px 30px;
+    }
+    .login:hover {
+        color: #39C3E7;
+        background: white;
+        border: 1px solid #39C3E7;
+    }
+    h3{
+        color: #39C3E7;
+    }
+    h4{
+        font-size: 20px;
+        color: rgb(174, 167, 180);
+    }
+    .land{
+        height: 50vh;
+        margin-top: 200px;
+        background-size: auto;
+        background-position: top;
+    }
+    .intro {
+        padding: 1px 100px;
+        opacity: 0.6;
+    }
+    .intro, h1{
+        font-size: 28px;
+    }
+    .mission {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .goal {
+        background: #39C3E7;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .events {
+        background: #2a70de;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .involve {
+        background: #213e8c;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .m-title {
+        color: white;
+        text-decoration: none;
+        font-size: 40px;
+        font-weight: 800;
+        margin: 10px 0px;
+    }
+    .p-title {
+        color: white;
+        font-size: 18px;
+    }
+    .quote {
+        margin: 100px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .support {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 500px;
+    }
+    .join {
+        background: #213e8c;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .about-img {
+        background: url('../images/kids.jpg');
+        background-size: cover;
+        background-position: bottom;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .join-title {
+        color: white;
+        text-decoration: none;
+        font-size: 35px;
+        font-weight: 600;
+        margin: 10px 0px;
+    }
+    .support-link {
+        text-decoration: none;
+        color: white;
+        background: #39C3E7;
+        padding: 10px 30px;
+        border-radius: 50px;
+        font-size: 18px;
+    }
+    footer{
+        border-top: 1px solid grey;
+        text-align: center;
+        width: 100%;
+        float: left;
+    }
+    footer,p
+    {
+        color: grey;
+    }
+    h2{
+        font-style: italic;
+        font-size: 40px;
+        color: black;
+        margin: 0px;
+    }
+    
+    /* Login Page */
+    .loginSection {
+        width: 100%;
+        min-height: 100vh !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+    .homeSection {
+        width: 100%;
+        min-height: 80vh !important;
+        margin-top: 300px;
+        display: flex;
+        flex-direction: column;
+        /*justify-content: center;*/
+        align-items: center;
+        /* background: #aaa; */
+    }
+    .box {
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        /*justify-content: center;*/
+        padding: 10px;
+        /* border: 1px solid #39C3E7; */
+        border-radius: 10px;
+    }
+    .login-title {
+        text-align: center;
+        color: #39C3E7;
+    }
+    .login-btn {
+        font-size: 20px;
+    }
+}
