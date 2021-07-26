@@ -12,7 +12,7 @@ if(isset($_POST['register'])) {
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
 
-    validate($name, $email);
+    validate($name, $email, $phone, $password, $password_confirm);
 
     // if(isset($name) AND !empty($name) AND isset($email) AND !empty($email) AND isset($phone) AND !empty($phone) AND isset($password) AND !empty($password) AND isset($password_confirm) AND !empty($password_confirm)) {
         
