@@ -8,6 +8,7 @@ if(isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $address = $_POST['address'];
     $description = $_POST['description'];
     $evidence = $_FILES["evidence"];
     $paybill_no = $_POST["paybill_no"];
@@ -18,6 +19,7 @@ if(isset($_POST['register'])) {
     if(isset($name) AND !empty($name) AND
     isset($email) AND !empty($email) AND
     isset($phone) AND !empty($phone) AND
+    isset($address) AND !empty($address) AND
     isset($evidence) AND !empty($evidence) AND
     isset($password) AND !empty($password) AND
     isset($password_confirm) AND !empty($password_confirm) AND
@@ -64,8 +66,8 @@ if(isset($_POST['register'])) {
                             if(empty($errors)==true){
                                  move_uploaded_file($file_tmp,"org_certificates/".$file_name);
                                  
-                                    $sql = $db->prepare("INSERT INTO organisations(name, email, phone_number, evidence, paybill_no, account_no, description, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-                                    $result = $sql->execute(array($name, $email, $phone, $file_name, $paybill_no, $account_no, $description, $pwd));
+                                    $sql = $db->prepare("INSERT INTO organisations(name, email, phone_number, address, evidence, paybill_no, account_no, description, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                    $result = $sql->execute(array($name, $email, $phone, $address, $file_name, $paybill_no, $account_no, $description, $pwd));
                                     
                                     if($result){
                                         $success = 'Registration was successfull. Go to login page or click <a href="login.php">here</a>';
@@ -141,22 +143,27 @@ if(isset($_POST['register'])) {
                 
                 <div class="email-section">
                     <label for="name">Name:</label>
-                    <input type="name" name="name" value="<?php if($_POST['name']) { echo $_POST['name']; } ?>" placeholder="Type your name here">
+                    <input type="name" name="name" value="<?php if(isset($_POST['name'])) { echo $_POST['name']; } ?>" placeholder="Type your name here">
                 </div>
 
                 <div class="email-section">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" value="<?php if($_POST['email']) { echo $_POST['email']; } ?>"  placeholder="Type your email here">
+                    <input type="email" name="email" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>"  placeholder="Type your email here">
                 </div>
                 
                 <div class="email-section">
                     <label for="phone">Phone number:</label>
-                    <input type="number" name="phone" value="<?php if($_POST['phone']) { echo $_POST['phone']; } ?>"  placeholder="Type your phone number here">
+                    <input type="number" name="phone" value="<?php if(isset($_POST['phone'])) { echo $_POST['phone']; } ?>"  placeholder="Type your phone number here">
+                </div>
+
+                <div class="email-section">
+                    <label for="address">Address:</label>
+                    <input type="text" name="address" value="<?php if(isset($_POST['address'])) { echo $_POST['address']; } ?>"  placeholder="Type your address here">
                 </div>
                 
                 <div class="email-section">
                     <label for="description">Description:</label>
-                    <textarea name="description" rows="7"  placeholder="Type the Organisation description here"><?php if($_POST['description']) { echo $_POST['description']; } ?></textarea>
+                    <textarea name="description" rows="7"  placeholder="Type the Organisation description here"><?php if(isset($_POST['description'])) { echo $_POST['description']; } ?></textarea>
                 </div>
 
                 <div class="email-section">
@@ -166,12 +173,12 @@ if(isset($_POST['register'])) {
                 
                 <div class="email-section">
                     <label>Paybill number:</label>
-                    <input type="number" name="paybill_no" value="<?php if($_POST['paybill_no']) { echo $_POST['paybill_no']; } ?>"  placeholder="Type your Paybill number here">
+                    <input type="number" name="paybill_no" value="<?php if(isset($_POST['paybill_no'])) { echo $_POST['paybill_no']; } ?>"  placeholder="Type your Paybill number here">
                 </div>
                 
                 <div class="email-section">
                     <label>Account number:</label>
-                    <input type="text" name="account_no" value="<?php if($_POST['account_no']) { echo $_POST['account_no']; } ?>"  placeholder="Type your Account number here">
+                    <input type="text" name="account_no" value="<?php if(isset($_POST['account_no'])) { echo $_POST['account_no']; } ?>"  placeholder="Type your Account number here">
                 </div>
 
                 <div class="password-section">

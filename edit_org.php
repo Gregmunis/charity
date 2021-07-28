@@ -5,8 +5,15 @@ session_start();
 if(isset($_SESSION['auth'])){
     
     $user = $_SESSION['auth']; 
-    $req = $db->prepare("SELECT * FROM users WHERE id = ?");
+    
+    $req = $db->prepare("SELECT * FROM admins WHERE id = ?");
     $req->execute(array($user['id']));
+
+    if($req->rowCount() == 0) {
+        $req = $db->prepare("SELECT * FROM users WHERE id = ?");
+        $req->execute(array($user['id']));  
+    }
+
     $current = $req->fetch();
     if ($current['is_admin']) {
         
@@ -22,6 +29,7 @@ if(isset($_SESSION['auth'])){
                     $name = $_POST['name'];
                     $email = $_POST['email'];
                     $phone = $_POST['phone'];
+                    $address = $_POST['address'];
                     $description = $_POST['description'];
                     $paybill_no = $_POST["paybill_no"];
                     $account_no = $_POST["account_no"];
@@ -59,6 +67,19 @@ if(isset($_SESSION['auth'])){
                             
                         $sql = $db->prepare("UPDATE organisations SET phone_number = ? WHERE id = ?");
                         $result = $sql->execute(array($phone, $id));
+                                    
+                        if($result){
+                            $success = 1;
+                        }else{
+                            $error = 'There were errors while saving the data.';
+                            $success = null;
+                        }
+                    }
+
+                    if(isset($address) AND !empty($address) AND $address != $org['address']) {
+                            
+                        $sql = $db->prepare("UPDATE organisations SET address = ? WHERE id = ?");
+                        $result = $sql->execute(array($address, $id));
                                     
                         if($result){
                             $success = 1;
@@ -186,6 +207,11 @@ if(isset($_SESSION['auth'])){
                 <div class="email-section">
                     <label for="phone">Phone number:</label>
                     <input type="number" name="phone" value="<?= $org['phone_number'] ?>" placeholder="Type your phone number here">
+                </div>
+
+                <div class="email-section">
+                    <label for="address">Address:</label>
+                    <input type="text" name="address" value="<?= $org['address'] ?>"  placeholder="Type your address here">
                 </div>
                 
                 <div class="email-section">

@@ -5,8 +5,15 @@ session_start();
 if(isset($_SESSION['auth'])){
     
     $user = $_SESSION['auth']; 
-    $req = $db->prepare("SELECT * FROM users WHERE id = ?");
+    
+    $req = $db->prepare("SELECT * FROM admins WHERE id = ?");
     $req->execute(array($user['id']));
+
+    if($req->rowCount() == 0) {
+        $req = $db->prepare("SELECT * FROM users WHERE id = ?");
+        $req->execute(array($user['id']));  
+    }
+
     $current = $req->fetch();
     if ($current['is_admin']) {
         
@@ -55,6 +62,7 @@ if(isset($_SESSION['auth'])){
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>
+                  <th>Address</th>
                   <th>Description</th>
                   <th>Paybill</th>
                   <th>Account No</th>
@@ -73,6 +81,7 @@ if(isset($_SESSION['auth'])){
                   <td><?= $org['name'] ?></td>
                   <td><?= $org['email'] ?></td>
                   <td><?= $org['phone_number'] ?></td>
+                  <td><?= $org['address'] ?></td>
                   <td><?= $org['description'] ?></td>
                   <td><?= $org['paybill_no'] ?></td>
                   <td><?= $org['account_no'] ?></td>

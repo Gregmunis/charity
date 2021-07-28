@@ -12,52 +12,54 @@ if(!isset($_SESSION['auth'])){
         {
             $email = $_POST['email'];
             $password = sha1($_POST['password']);
-
-            // $req = $db->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-            // $req->execute(array($email, $password));
-            // /* Execute the query */
-            // try
-            // {
-            //     $user_exist = $req->rowCount();
-            //     $user_exist == 1
-            // }
-            // catch (PDOException $e)
-            // {
-            // /* If there is a PDO exception, throw a standard exception */
-            // // throw new Exception($e);
-            // $error = $e;
-            // }
         
-            $req = $db->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+            $req = $db->prepare("SELECT * FROM admins WHERE email = ? AND password = ?");
             $req->execute(array($email, $password));
             $user_exist = $req->rowCount();
-            if($user_exist == 1)
-            {
+
+            if($user_exist == 1) {
                 $user = $req->fetch();
                 $_SESSION['auth'] = $user;
-    
-                if($user['is_admin'])
-                {
-                    header("Location: dashboard.php");
-                }
-                else 
-                {
-                    header("Location: support.php");
-                }
+                header("Location: dashboard.php");
             }
-            elseif($user_exist == 0) {
-                $req = $db->prepare("SELECT * FROM organisations WHERE email = ? AND password = ?");
+            else {
+
+                $req = $db->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
                 $req->execute(array($email, $password));
                 $user_exist = $req->rowCount();
                 if($user_exist == 1)
                 {
                     $user = $req->fetch();
-                    if($user['is_active']) {
-                        $_SESSION['auth'] = $user;
-            
-                        header("Location: home.php");
-                    } else {
-                        $error = "Account not yet activated, please contact the Admin";
+                    $_SESSION['auth'] = $user;
+        
+                    if($user['is_admin'])
+                    {
+                        header("Location: dashboard.php");
+                    }
+                    else 
+                    {
+                        header("Location: support.php");
+                    }
+                }
+                elseif($user_exist == 0) {
+                    $req = $db->prepare("SELECT * FROM organisations WHERE email = ? AND password = ?");
+                    $req->execute(array($email, $password));
+                    $user_exist = $req->rowCount();
+                    if($user_exist == 1)
+                    {
+                        $user = $req->fetch();
+                        if($user['is_active']) {
+                            $_SESSION['auth'] = $user;
+                
+                            header("Location: home.php");
+                        } else {
+                            $error = "Account not yet activated, please contact the Admin";
+                        }
+                    }
+                    else
+                    {
+                        $error = "Username or password incorrect !";
+                        
                     }
                 }
                 else
@@ -65,11 +67,6 @@ if(!isset($_SESSION['auth'])){
                     $error = "Username or password incorrect !";
                     
                 }
-            }
-            else
-            {
-                $error = "Username or password incorrect !";
-                
             }
         }
         else

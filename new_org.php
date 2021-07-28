@@ -5,8 +5,15 @@ session_start();
 if(isset($_SESSION['auth'])){
     
     $user = $_SESSION['auth']; 
-    $req = $db->prepare("SELECT * FROM users WHERE id = ?");
+    
+    $req = $db->prepare("SELECT * FROM admins WHERE id = ?");
     $req->execute(array($user['id']));
+
+    if($req->rowCount() == 0) {
+        $req = $db->prepare("SELECT * FROM users WHERE id = ?");
+        $req->execute(array($user['id']));  
+    }
+
     $current = $req->fetch();
     if ($current['is_admin']) {
 

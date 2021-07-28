@@ -3,22 +3,17 @@ body {
     padding: 0px;
 }
 header{
-    background: white;
+    background: #39C3E7;
     position: absolute;
     top:0px;
     left: 0px;
     right: 0px;
     padding: 8px 100px;
-    border-bottom: 1px solid #39C3E7;
 }
 .logo{
     width: 50px !important;
     float: left;
 }
-/*.menu{*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*}*/
 ul{
     list-style: none;
     text-align: right;
@@ -26,32 +21,30 @@ ul{
 li{
     display: inline;
     margin: 1px 20px;
-    color: #777;
+    color: white;
 }
 li>a{
-    color: #777;
+    color: white;
     text-decoration: none;
 }
 li>a:hover{
-    color: #39C3E7;
     padding-bottom: 10px;
-    border-bottom: 1px solid #39C3E7;
+    border-bottom: 1px solid white;
 }
 .active{
-    color: #39C3E7 !important;
     padding-bottom: 10px;
-    border-bottom: 1px solid #39C3E7;
+    border-bottom: 1px solid white;
 }
 .login {
-    color: white;
-    background: #39C3E7;
+    color: #39C3E7;
+    background: white;
     border-radius: 50px;
     padding: 7px 30px;
 }
 .login:hover {
-    color: #39C3E7;
-    background: white;
-    border: 1px solid #39C3E7;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
 }
 h3{
     color: #39C3E7;
@@ -206,6 +199,8 @@ h2{
     justify-content: center;
     align-items: center;
     /* background: #aaa; */
+    background: url('../images/background.jpg');
+    background-size: cover;
 }
 .homeSection {
     width: 100%;
@@ -223,9 +218,9 @@ h2{
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
-    padding: 10px;
-    /* border: 1px solid #39C3E7; */
+    padding: 10px 50px;
     border-radius: 10px;
+    background: white;
 }
 .box2 {
     width: 90%;
@@ -277,6 +272,7 @@ input {
     height: 40px;
     border: 1px solid #39C3E7;
     padding-left: 10px;
+    border-radius: 20px;
 }
 select {
     height: 40px;
@@ -286,6 +282,7 @@ select {
 textarea {
     border: 1px solid #39C3E7;
     padding-left: 10px;
+    border-radius: 20px;
 }
 .error {
     background: rgb(255, 166, 166) !important;
